@@ -16,6 +16,9 @@ set_source_files_properties(org.freedesktop.login1.Manager.xml PROPERTIES
 set_source_files_properties(org.freedesktop.login1.Session.xml PROPERTIES
     INCLUDE DBusTypes.h
 )
+set_source_files_properties(${CMAKE_BINARY_DIR}/org.deepin.dde.dialog1.agent.xml PROPERTIES
+    INCLUDE DBusTypes.h
+)
 qt_add_dbus_interface(DIALOG_DAEMON_SRCS org.freedesktop.login1.Manager.xml Login1ManagerInterface)
 qt_add_dbus_interface(DIALOG_DAEMON_SRCS org.freedesktop.login1.Session.xml Login1SessionInterface)
 qt_add_dbus_interface(DIALOG_DAEMON_SRCS ${CMAKE_BINARY_DIR}/org.deepin.dde.dialog1.agent.xml AgentInterface)

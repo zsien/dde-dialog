@@ -34,7 +34,7 @@ qt_generate_dbus_interface(src/daemon/Dialog.h org.deepin.dde.dialog1.xml OPTION
 qt_generate_dbus_interface(src/agent/AgentInterface.h org.deepin.dde.dialog1.agent.xml
     OPTIONS
         -a
-        -t Action=(sssss)
+        -t "Action=(sssss)"
 )
 add_custom_target(dialog_xml ALL
     DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/org.deepin.dde.dialog1.xml
@@ -48,6 +48,6 @@ add_custom_target(agent_xml ALL
 add_subdirectory(src)
 
 install(
-    FILES misc/dbus/policy.d/org.deepin.dde.dialog1.conf
+    FILES misc/dbus/conf.d/org.deepin.dde.dialog1.conf
     DESTINATION ${DBUS_DATA_DIR}/system.d
 )

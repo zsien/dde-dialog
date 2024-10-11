@@ -13,9 +13,6 @@ set(DIALOG_AGENT_SRCS
 )
 
 qt_add_dbus_interface(DIALOG_AGENT_SRCS ${CMAKE_BINARY_DIR}/org.deepin.dde.dialog1.xml DialogInterface)
-qt_add_dbus_adaptor(DIALOG_AGENT_SRCS org.deepin.dde.dialog1.agent.xml AgentInterface.h
-    AgentInterface
-)
 
 qt_add_executable(${BIN_NAME})
 
