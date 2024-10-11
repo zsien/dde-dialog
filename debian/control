@@ -4,8 +4,13 @@ Priority: optional
 Maintainer: zsien <quezhiyong@deepin.org>
 Rules-Requires-Root: no
 Build-Depends:
- debhelper-compat (= 13),
  cmake,
+ debhelper-compat (= 13),
+ libsystemd-dev,
+ libyaml-cpp-dev,
+ pkg-config,
+ qt6-base-dev,
+ qt6-declarative-dev,
 Standards-Version: 4.7.0
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Browser: https://salsa.debian.org/debian/dde-dialog
@@ -14,7 +19,7 @@ Homepage: <insert the upstream URL, if relevant>
 Package: dde-dialog
 Architecture: any
 Depends:
- ${shlibs:Depends},
  ${misc:Depends},
+ ${shlibs:Depends},
 Description: <insert up to 60 chars description>
  <Insert long description, indented with spaces.>
