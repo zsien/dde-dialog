@@ -1,23 +1,71 @@
 import QtQuick
 import QtQml.Models
+import QtQuick.Controls
+import QtQuick.Layouts
+
+import org.deepin.dtk 1.0
+
+import agent
 
 Instantiator {
     id: windowInstantiator
 
-    model: ListModel {
-        id: windowModel
-        ListElement { title: "Initial Window"; x: -200 }
-        ListElement { title: "Second Window"; x:300 }
-    }
+    model: Agent.model
 
-    delegate: Window {
+    delegate: DialogWindow {
         id: window
+        minimumWidth: 400
         visible: true
-        width: 640
-        height: 480
-        x: Screen.width/2 - window.width/2 + model.x
-        y: Screen.height / 2 - window.height/2
+        required property var model
 
-        title: model.title
+        ColumnLayout {
+            id: content
+            width: parent.width
+            spacing: 10
+
+            Label {
+                Layout.preferredWidth: parent.width
+                font: DTK.fontManager.t5
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Qt.AlignHCenter
+
+                text: model.description
+            }
+            Label {
+                Layout.preferredWidth: parent.width
+                font: DTK.fontManager.t5
+                wrapMode: Text.WordWrap
+                horizontalAlignment: Qt.AlignHCenter
+
+                text: model.message
+            }
+
+            function triggerAction(actionIndex) {
+                Agent.model.trigger(model.cookie, actionIndex)
+            }
+
+            RowLayout {
+                Layout.alignment: Qt.AlignHCenter
+                Layout.topMargin: 10
+                Layout.bottomMargin: 10
+
+                spacing: 10
+
+                Repeater {
+                    model: {
+                        return window.model.actions
+                    }
+
+                    Button {
+                        text: modelData
+
+                        onClicked: {
+                            console.log(index)
+                            content.triggerAction(index)
+                        }
+                    }
+                }
+            }
+        }
     }
 }

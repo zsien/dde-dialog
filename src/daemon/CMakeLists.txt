@@ -2,8 +2,8 @@ set(BIN_NAME dialog-daemon)
 
 set(DIALOG_DAEMON_SRCS
     main.cpp
-    Dialog.h
-    Dialog.cpp
+    DialogAdaptor.h
+    DialogAdaptor.cpp
     ../common/DBusTypes.h
     ../common/DBusTypes.cpp
 )
@@ -34,11 +34,11 @@ target_link_libraries(${BIN_NAME} PRIVATE
     Qt6::DBus
     PkgConfig::libsystemd
     yaml-cpp
+    fmt
 )
 
 install(TARGETS ${BIN_NAME}
-    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/dde-dialog
 )
 
 configure_file(config.h.in config.h)

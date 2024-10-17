@@ -26,28 +26,29 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ListSessionsSessi
     return argument;
 }
 
-
-QDBusArgument &operator<<(QDBusArgument &argument, const Action &action)
+QDBusArgument &operator<<(QDBusArgument &argument, const Schema &schema)
 {
     argument.beginStructure();
-    argument << action.id;
-    argument << action.gettextDomain;
-    argument << action.type;
-    argument << action.description;
-    argument << action.message;
+    argument << schema.id;
+    argument << schema.type;
+    argument << schema.gettextDomain;
+    argument << schema.description;
+    argument << schema.message;
+    argument << schema.actions;
     argument.endStructure();
 
     return argument;
 }
 
-const QDBusArgument &operator>>(const QDBusArgument &argument, Action &action)
+const QDBusArgument &operator>>(const QDBusArgument &argument, Schema &schema)
 {
     argument.beginStructure();
-    argument >> action.id;
-    argument >> action.gettextDomain;
-    argument >> action.type;
-    argument >> action.description;
-    argument >> action.message;
+    argument >> schema.id;
+    argument >> schema.type;
+    argument >> schema.gettextDomain;
+    argument >> schema.description;
+    argument >> schema.message;
+    argument >> schema.actions;
     argument.endStructure();
 
     return argument;

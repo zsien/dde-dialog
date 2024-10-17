@@ -4,6 +4,8 @@
 #include <QDBusArgument>
 #include <QDBusObjectPath>
 
+// #include "EnumDBus.h"
+
 struct ListSessionsSession {
     QString id;
     uint32_t userId;
@@ -12,18 +14,25 @@ struct ListSessionsSession {
     QDBusObjectPath objectPath;
 };
 Q_DECLARE_METATYPE(ListSessionsSession)
+Q_DECLARE_METATYPE(QVector<ListSessionsSession>)
 
 QDBusArgument &operator<<(QDBusArgument &argument, const ListSessionsSession &listSessionSession);
 const QDBusArgument &operator>>(const QDBusArgument &argument, ListSessionsSession &listSessionSession);
 
-struct Action {
+using ActionType = int;
+inline ActionType ActionTypeCancel = 0;
+inline ActionType ActionTypeOk = 1;
+inline ActionType ActionTypeCustom = 2;
+
+struct Schema {
     QString id;
-    QString gettextDomain;
     QString type;
+    QString gettextDomain;
     QString description;
     QString message;
+    QStringList actions;
 };
-Q_DECLARE_METATYPE(Action)
+Q_DECLARE_METATYPE(Schema)
 
-QDBusArgument &operator<<(QDBusArgument &argument, const Action &action);
-const QDBusArgument &operator>>(const QDBusArgument &argument, Action &action);
+QDBusArgument &operator<<(QDBusArgument &argument, const Schema &action);
+const QDBusArgument &operator>>(const QDBusArgument &argument, Schema &action);
