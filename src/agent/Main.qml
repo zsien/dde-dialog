@@ -58,6 +58,7 @@ Instantiator {
 
                     Button {
                         text: modelData
+                        Layout.fillWidth: true
 
                         onClicked: {
                             console.log(index)

@@ -74,7 +74,7 @@ void DialogModel::newDialog(DialogInstance *di, const QVariantMap &options) {
     endInsertRows();
 }
 
-void DialogModel::removeDiglog(const QString &cookie) {
+void DialogModel::removeDialog(const QString &cookie) {
     auto i = std::find_if(m_data.begin(), m_data.end(), [&cookie](auto &di) {
         return di->cookie == cookie;
     });

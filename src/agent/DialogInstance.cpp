@@ -30,7 +30,7 @@ DialogInstance::DialogInstance(const QString &cookie, const Schema &schema, cons
             continue;
         }
 
-        Q_ASSERT(false);
+        Q_UNREACHABLE();
     }
 
     if (schema.gettextDomain.isEmpty()) {

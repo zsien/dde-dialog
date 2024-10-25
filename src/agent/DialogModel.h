@@ -23,7 +23,7 @@ public:
     ~DialogModel();
 
     void newDialog(DialogInstance *di, const QVariantMap &options);
-    void removeDiglog(const QString &cookie);
+    void removeDialog(const QString &cookie);
 
     QHash<int, QByteArray> roleNames() const override;
 
